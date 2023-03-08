@@ -105,11 +105,7 @@
         android:id="@+id/googleSignup"
         android:layout_width="260dp"
         android:layout_height="50dp"
-        android:background="@color/white"
-        app:layout_constraintEnd_toEndof="parent"
-        app:layout_constraintBottom_toBottomof="parent"
-        app:layout_constraintStart_toStartof="parent"
-        app:layout_constraintTop_toTopof="parent">
+        android:background="@color/white">
 
         <ImageButton
             android:layout_width="match_parent"
@@ -135,11 +131,7 @@
         android:layout_width="260dp"
         android:layout_height="50dp"
         android:background="@color/white"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndof="parent"
-        app:layout_constraintBottom_toBottomof="parent"
-        app:layout_constraintStart_toStartof="parent"
-        app:layout_constraintTop_toTopof="parent">
+        android:layout_marginTop="10dp">
 
         <ImageButton
             android:layout_width="match_parent"

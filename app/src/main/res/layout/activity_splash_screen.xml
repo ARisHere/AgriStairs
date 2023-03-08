@@ -2,9 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Splash_Screen"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="horizontal"
     android:background="@drawable/agriculturalfieldbackground">
 
 
@@ -14,7 +16,6 @@
         android:layout_height="300dp"
         android:layout_marginTop="80dp"
         android:src="@drawable/agristairslogo"
-        android:layout_gravity="center|top"
-        android:layout_marginLeft="55dp"/>
+        android:layout_gravity="center|top"/>
 
 </LinearLayout>

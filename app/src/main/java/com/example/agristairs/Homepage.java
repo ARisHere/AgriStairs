@@ -33,14 +33,25 @@ public class Homepage extends AppCompatActivity {
     }
 
 
-    @Override
     public void onBackPressed(){
 
-        new AlertDialog.Builder(this).setMessage("Are You want to Logout?").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        AlertDialog.Builder  ad =  new AlertDialog.Builder(Homepage.this);
+        ad.setTitle("LOGOUT");
+        ad.setMessage("Are You Want to Logout?");
+        ad.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                a.setClass(getApplicationContext(), Login.class);
+                startActivity(a);
                 finish();
             }
         });
+        ad.setNegativeButton("No",  new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();;
+            }
+        });
+        ad.show();
     }
 }
