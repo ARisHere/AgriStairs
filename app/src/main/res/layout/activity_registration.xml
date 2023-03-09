@@ -44,6 +44,7 @@
                 android:drawablePadding="8dp"
                 android:hint="Username"
                 android:padding="8dp"
+                android:textColorHint="@color/DarkSlateBlue"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:layout_marginTop="40dp"/>
@@ -52,6 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/regemail"
+                android:textColorHint="@color/DarkSlateBlue"
                 android:background="@drawable/custom_edit"
                 android:drawableLeft="@drawable/ic_baseline_email_24"
                 android:drawablePadding="8dp"
@@ -65,6 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/regpassword"
+                android:textColorHint="@color/DarkSlateBlue"
                 android:background="@drawable/custom_edit"
                 android:drawableLeft="@drawable/ic_baseline_lock_24"
                 android:drawablePadding="8dp"
