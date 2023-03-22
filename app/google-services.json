@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "910971753642",
+    "project_id": "agristairs",
+    "storage_bucket": "agristairs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:910971753642:android:ad8f080c9301286573acd3",
+        "android_client_info": {
+          "package_name": "com.example.agristairs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "910971753642-lpjea41euhp23h3fqll2no4cmc12rqg9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.agristairs",
+            "certificate_hash": "12393542f38be57d69b307895d7ee6c2a9818fb1"
+          }
+        },
+        {
+          "client_id": "910971753642-iuve6nvdkig853tpgqglpaortl9odssc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWvvihnsyFFCG0i6NJ679Kw0odA3roNOw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "910971753642-iuve6nvdkig853tpgqglpaortl9odssc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

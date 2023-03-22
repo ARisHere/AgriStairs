@@ -9,6 +9,12 @@
     android:gravity="center"
     android:background="@drawable/loginbg">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,11 +44,12 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/logemail"
+                android:id="@+id/logphone"
                 android:background="@drawable/custom_edit"
-                android:drawableLeft="@drawable/ic_baseline_person_24"
+                android:drawableLeft="@drawable/ic_baseline_email_24"
                 android:drawablePadding="8dp"
-                android:hint="Email or Phone No"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
                 android:textColorHint="@color/DarkSlateBlue"
                 android:padding="8dp"
                 android:textColor="@color/black"

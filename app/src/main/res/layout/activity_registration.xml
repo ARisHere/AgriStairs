@@ -9,6 +9,12 @@
     android:gravity="center"
     android:background="@drawable/loginbg">
 
+    <ProgressBar
+        android:id="@+id/pBar2"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,11 +44,12 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/username"
+                android:id="@+id/name"
                 android:background="@drawable/custom_edit"
                 android:drawableLeft="@drawable/ic_baseline_person_24"
                 android:drawablePadding="8dp"
-                android:hint="Username"
+                android:hint="Full Name"
+                android:inputType="text"
                 android:padding="8dp"
                 android:textColorHint="@color/DarkSlateBlue"
                 android:textColor="@color/black"
@@ -52,12 +59,13 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/regemail"
+                android:id="@+id/phone"
                 android:textColorHint="@color/DarkSlateBlue"
                 android:background="@drawable/custom_edit"
                 android:drawableLeft="@drawable/ic_baseline_email_24"
                 android:drawablePadding="8dp"
-                android:hint="Email or WhatsApp  No"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
                 android:padding="8dp"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background"
@@ -66,7 +74,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/regpassword"
+                android:id="@+id/pass1"
                 android:textColorHint="@color/DarkSlateBlue"
                 android:background="@drawable/custom_edit"
                 android:drawableLeft="@drawable/ic_baseline_lock_24"
@@ -78,10 +86,25 @@
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:layout_marginTop="20dp"/>
 
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/pass2"
+                android:textColorHint="@color/DarkSlateBlue"
+                android:background="@drawable/custom_edit"
+                android:drawableLeft="@drawable/ic_baseline_lock_24"
+                android:drawablePadding="8dp"
+                android:hint="Confirm Password"
+                android:padding="8dp"
+                android:inputType="textPassword"
+                android:textColor="@color/black"
+                android:textColorHighlight="@color/cardview_dark_background"
+                android:layout_marginTop="20dp"/>
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:id="@+id/registrationbutton"
+                android:id="@+id/rbutton"
                 android:text="register"
                 android:textSize="18sp"
                 android:layout_marginTop="20dp"
@@ -104,55 +127,5 @@
         android:id="@+id/loginText"
         android:textColor="@color/Red"
         android:textStyle="bold" />
-
-    <FrameLayout
-        android:id="@+id/googleSignup"
-        android:layout_width="260dp"
-        android:layout_height="50dp"
-        android:background="@color/white">
-
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white"
-            android:src="@drawable/googlelogo"
-            android:scaleType="fitStart" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Signup with Google"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:layout_marginLeft="25dp"
-            android:textColor="@color/SteelBlue"/>
-    </FrameLayout>
-
-
-    <FrameLayout
-        android:id="@+id/whatsappSignup"
-        android:layout_width="260dp"
-        android:layout_height="50dp"
-        android:background="@color/white"
-        android:layout_marginTop="10dp">
-
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white"
-            android:src="@drawable/whatsapplogo"
-            android:scaleType="fitStart" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Signup with WhatsApp"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:layout_marginLeft="25dp"
-            android:textColor="@color/SteelBlue"/>
-    </FrameLayout>
 
 </LinearLayout>
