@@ -46,11 +46,9 @@
                 android:layout_width="240dp"
                 android:layout_height="200dp"
                 android:foregroundGravity="center"
-                android:layout_margin="10dp"
+                android:layout_margin="40dp"
                 app:srcCompat="@drawable/chatbot"
-                tools:layout_editor_absoluteX="87dp"
-                tools:layout_editor_absoluteY="94dp"
-                tools:ignore="MissingConstraints" />
+                />
 
             <Button
                 android:id="@+id/chatbotbutton"
@@ -66,7 +64,18 @@
                 tools:ignore="MissingConstraints" />
 
 
-
+        <Button
+            android:id="@+id/croptype"
+            android:layout_width="240dp"
+            android:layout_height="100dp"
+            android:text="Crop Category"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            tools:layout_editor_absoluteX="88dp"
+            tools:layout_editor_absoluteY="320dp"
+            android:textSize="18sp"
+            android:backgroundTint="@color/teal_200"
+            tools:ignore="MissingConstraints" />
     </LinearLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>

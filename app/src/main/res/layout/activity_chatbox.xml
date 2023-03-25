@@ -19,17 +19,38 @@
         android:layout_alignParentBottom="true"
         android:id="@+id/msg">
 
-        <EditText
-            android:layout_width="match_parent"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Enter Message"
-            android:textColorHint="@color/white"
+            android:src="@drawable/camera"
+            android:id="@+id/cam"
+
+            />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/gallary"
+            android:layout_toRightOf="@+id/cam"
+            android:id="@+id/gallary"
+
+            />
+
+        <EditText
             android:id="@+id/edtmsg"
-            android:layout_margin="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginBottom="3dp"
             android:layout_toLeftOf="@id/sendBTN"
+            android:layout_toRightOf="@+id/gallary"
+            android:hint="Enter Message"
+            android:singleLine="true"
             android:textColor="@color/white"
-            android:singleLine="true"/>
+            android:textColorHint="@color/white" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
