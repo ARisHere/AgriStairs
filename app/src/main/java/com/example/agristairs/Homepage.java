@@ -12,6 +12,7 @@ import android.widget.Button;
 public class Homepage extends AppCompatActivity {
 
     private Button chatbox;
+    private Button category;
     Intent a = new Intent();
 
     @Override
@@ -20,12 +21,23 @@ public class Homepage extends AppCompatActivity {
         setContentView(R.layout.activity_homepage);
 
         chatbox = (Button) findViewById(R.id.chatbotbutton);
+        category = (Button) findViewById(R.id.croptype);
 
 
         chatbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View _view) {
                 a.setClass(getApplicationContext(), Chatbox.class);
+                startActivity(a);
+                finish();
+            }
+        });
+
+
+        category.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View _view) {
+                a.setClass(getApplicationContext(), crop_category.class);
                 startActivity(a);
                 finish();
             }
