@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">AgriStairs</string>
+    <string name="we_will_send_you_an_one_time_password">we will send you an one time password</string>
+    <string name="enter_moblie_number">Enter Moblie number</string>
+    <string name="_88">+88-</string>
+    <string name="_1234567890">1234567890</string>
+    <string name="get_otp">Get OTP</string>
+    <string name="title_activity_verify_otp">VerifyOTP</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="enter_the_otp">Enter the OTP</string>
+    <string name="didn_t_recive_the_otp">Didn\'t recive the OTP</string>
+    <string name="resend_otp">RESEND OTP</string>
+    <string name="verify">Verify</string>
 </resources>
