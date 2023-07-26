@@ -23,17 +23,17 @@ public class VerifyOTP extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_otp);
-        Verify = (Button) findViewById(R.id.buttonVerify);
+
+        Verify = (Button) findViewById(R.id.btnverify);
 
         Verify.setOnClickListener(new View.OnClickListener() {
-                                      @Override
-                                      public void onClick(View v) {
-                                          a.setClass(getApplicationContext(),Login.class);
-                                          startActivity(a);
-                                          finish();
-
+            @Override
+            public void onClick(View v) {
+                a.setClass(getApplicationContext(), Login.class);
+                startActivity(a);
+                finish();
                                       }
-                                  }
+        }
         );
 
         TextView textmobile = findViewById(R.id.textMobile);

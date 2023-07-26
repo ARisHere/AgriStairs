@@ -19,32 +19,18 @@
         android:layout_alignParentBottom="true"
         android:id="@+id/msg">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/camera"
-            android:id="@+id/cam"
-
-            />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/gallary"
-            android:layout_toRightOf="@+id/cam"
-            android:id="@+id/gallary"
-
-            />
-
         <EditText
             android:id="@+id/edtmsg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="10dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="19dp"
             android:layout_marginTop="3dp"
-            android:layout_marginEnd="3dp"
+            android:layout_marginEnd="7dp"
+            android:layout_marginRight="217dp"
             android:layout_marginBottom="3dp"
+            android:layout_toStartOf="@+id/sendBTN"
             android:layout_toLeftOf="@id/sendBTN"
             android:layout_toRightOf="@+id/gallary"
             android:hint="Enter Message"

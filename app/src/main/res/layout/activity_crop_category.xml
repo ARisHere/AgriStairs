@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,89 +7,108 @@
     android:background="@drawable/splash"
     tools:context=".crop_category">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:layout_gravity="center"
         android:orientation="vertical">
 
-
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="horizontal">
-        <ImageButton
-            android:layout_margin="10dp"
-            android:id="@+id/rice"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:backgroundTint="@color/teal_200"
-            android:layout_gravity="center"
-            android:scaleType="fitCenter"
-            android:src="@drawable/rice" />
-
-        <ImageButton
-            android:layout_margin="10dp"
-            android:id="@+id/wheat"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/teal_200"
-            android:scaleType="fitCenter"
-            android:src="@drawable/wheat" />
-
-        </LinearLayout>
+            android:layout_height="match_parent">
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/rice"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/rice"
+                app:layout_constraintBottom_toTopOf="@+id/sugarcane"
+                app:layout_constraintEnd_toStartOf="@+id/wheat"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:layout_margin="10dp"
-            android:id="@+id/sugarcane"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:backgroundTint="@color/teal_200"
-            android:layout_gravity="center"
-            android:scaleType="fitCenter"
-            android:src="@drawable/sugarcane" />
+            <ImageButton
+                android:id="@+id/wheat"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/wheat"
+                app:layout_constraintBottom_toTopOf="@+id/jute"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/rice"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:layout_margin="10dp"
-            android:id="@+id/jute"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/teal_200"
-            android:scaleType="fitCenter"
-            android:src="@drawable/jute" />
+            <ImageButton
+                android:id="@+id/sugarcane"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/sugarcane"
+                app:layout_constraintBottom_toTopOf="@+id/mustard"
+                app:layout_constraintEnd_toStartOf="@+id/jute"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rice" />
 
-        </LinearLayout>
+            <ImageButton
+                android:id="@+id/jute"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/jute"
+                app:layout_constraintBottom_toTopOf="@+id/tea"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/sugarcane"
+                app:layout_constraintTop_toBottomOf="@+id/wheat" />
 
-        <ImageButton
-            android:layout_margin="10dp"
-            android:id="@+id/mustard"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/teal_200"
-            android:scaleType="fitCenter"
-            android:src="@drawable/mustard" />
+
+            <ImageButton
+                android:id="@+id/mustard"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/mustard"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tea"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sugarcane" />
+
+            <ImageButton
+                android:id="@+id/tea"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/tree"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/mustard"
+                app:layout_constraintTop_toBottomOf="@+id/jute" />
 
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
 
-    </LinearLayout>
 </ScrollView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
 
 
 

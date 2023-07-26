@@ -26,16 +26,15 @@ import com.google.firebase.auth.FirebaseAuth;
 public class Login extends AppCompatActivity {
 
     private Button login;
-    private TextView register;
-    private EditText pass;
+
     private EditText phonen;
     private ProgressBar progressBar;
-    private FrameLayout signg;
     private AlertDialog.Builder d;
     FirebaseAuth fauth;
 
 //    GoogleSignInOptions gso;
 //    GoogleSignInClient gsc;
+
 
 
 
@@ -50,16 +49,12 @@ public class Login extends AppCompatActivity {
     private void initialize(Bundle savedInstanceState) {
 
         login= (Button) findViewById(R.id.loginbutton);
-        register= (TextView) findViewById(R.id.signup);
         phonen = (EditText) findViewById(R.id.logphone);
-        pass = (EditText) findViewById(R.id.logpassword);
-        signg = (FrameLayout) findViewById(R.id.googleLogin);
         fauth = FirebaseAuth.getInstance();
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar = (ProgressBar) findViewById(R.id.pb);
         d = new AlertDialog.Builder(this);
 
 
-//        gso=new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
 
 
 
@@ -70,51 +65,46 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String Phone = phonen.getText().toString().trim();
-                String password = pass.getText().toString().trim();
 
 
                 if (TextUtils.isEmpty(Phone)) {
-                    phonen.setError("You have must Enter an Email");
-                    return;
-                }
-                if (TextUtils.isEmpty(password)) {
-                    pass.setError("Please Enter your Password");
+                    phonen.setError("You have must Enter a mobile number");
                     return;
                 }
 
-                if (pass.length() < 6) {
-                    pass.setError("Please Enter password upto 6 Character");
+                if(phonen.length()!=11){
+                    phonen.setError("Enter Correct Mobile Number");
                     return;
                 }
 
                 progressBar.setVisibility(View.VISIBLE);
                 //sign in
 
-                fauth.signInWithEmailAndPassword(Phone,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), Homepage.class));
-                        }else {
-                            Toast.makeText(Login.this, "Error\n" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            progressBar.setVisibility(View.INVISIBLE);
-                        }
-
+                {
+                    if(Phone.equals("01739411518")){
+                        Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), Homepage.class));
+                        progressBar.setVisibility(View.INVISIBLE);
+                    }else {
+                        Toast.makeText(Login.this, "Log In Error! Try Again...", Toast.LENGTH_SHORT).show();
+                        progressBar.setVisibility(View.INVISIBLE);
                     }
-                });
+
+                }
+
+
             }
         });
 
 
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View _view) {
-                a.setClass(getApplicationContext(), Registration.class);
-                startActivity(a);
-                finish();
-            }
-        });
+//        register.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View _view) {
+//                a.setClass(getApplicationContext(), Registration.class);
+//                startActivity(a);
+//                finish();
+//            }
+//        });
 
 
     }

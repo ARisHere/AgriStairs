@@ -1,81 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:orientation="horizontal"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/agriculturalfieldbackground"
-    android:id="@+id/drawerlayout"
-    android:fitsSystemWindows="true"
-    tools:openDrawer="start">
-
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="200dp"
-        android:layout_height="match_parent"
-        android:id="@+id/navigationview"
-        app:itemTextColor="@color/black"
-        app:headerLayout="@layout/headerfile"
-        app:menu="@menu/sidemenu"
-        android:background="@color/white"
-        android:layout_gravity="start"
-        />
+    android:orientation="horizontal">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center|top">
+        android:layout_gravity="center">
 
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
-                app:logo="@drawable/menu"
-                app:title="Agristairs"
-                app:titleMarginStart="120dp"
-                app:titleTextColor="@color/SteelBlue"
-                tools:ignore="MissingConstraints" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
 
             <ImageView
                 android:id="@+id/chatbotlogo"
                 android:layout_width="240dp"
                 android:layout_height="200dp"
-                android:foregroundGravity="center"
                 android:layout_margin="40dp"
-                app:srcCompat="@drawable/chatbot"
-                />
+                android:foregroundGravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/chatbot" />
+
 
             <Button
                 android:id="@+id/chatbotbutton"
                 android:layout_width="240dp"
                 android:layout_height="60dp"
-                android:text="Chat Bot"
-                android:gravity="center"
                 android:layout_margin="10dp"
-                tools:layout_editor_absoluteX="88dp"
-                tools:layout_editor_absoluteY="320dp"
-                android:textSize="18sp"
+                android:layout_marginTop="12dp"
                 android:backgroundTint="@color/teal_200"
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:text="Chat Bot"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chatbotlogo"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/croptype"
+                android:layout_width="240dp"
+                android:layout_height="100dp"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/teal_200"
+                android:gravity="center"
+                android:text="Crop Category"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chatbotbutton"
                 tools:ignore="MissingConstraints" />
 
 
-        <Button
-            android:id="@+id/croptype"
-            android:layout_width="240dp"
-            android:layout_height="100dp"
-            android:text="Crop Category"
-            android:gravity="center"
-            android:layout_margin="10dp"
-            tools:layout_editor_absoluteX="88dp"
-            tools:layout_editor_absoluteY="320dp"
-            android:textSize="18sp"
-            android:backgroundTint="@color/teal_200"
-            tools:ignore="MissingConstraints" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
     </LinearLayout>
 
-</androidx.drawerlayout.widget.DrawerLayout>
+
+
+</ScrollView>
