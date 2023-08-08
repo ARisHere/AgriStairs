@@ -79,9 +79,7 @@ public class Login extends AppCompatActivity {
 
                 progressBar.setVisibility(View.VISIBLE);
                 //sign in
-
-                {
-                    if(Phone.equals("01739411518")){
+                    if(Phone.equals("Admin")){
                         Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getApplicationContext(), Homepage.class));
                         progressBar.setVisibility(View.INVISIBLE);
@@ -90,7 +88,7 @@ public class Login extends AppCompatActivity {
                         progressBar.setVisibility(View.INVISIBLE);
                     }
 
-                }
+
 
 
             }
