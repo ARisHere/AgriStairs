@@ -32,10 +32,6 @@ public class Login extends AppCompatActivity {
     private AlertDialog.Builder d;
     FirebaseAuth fauth;
 
-//    GoogleSignInOptions gso;
-//    GoogleSignInClient gsc;
-
-
 
 
     Intent a = new Intent();
@@ -80,7 +76,7 @@ public class Login extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
                 //sign in
                     if(Phone.equals("Admin")){
-                        Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, "Login Successful!", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getApplicationContext(), Homepage.class));
                         progressBar.setVisibility(View.INVISIBLE);
                     }else {
@@ -94,15 +90,6 @@ public class Login extends AppCompatActivity {
             }
         });
 
-
-//        register.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View _view) {
-//                a.setClass(getApplicationContext(), Registration.class);
-//                startActivity(a);
-//                finish();
-//            }
-//        });
 
 
     }

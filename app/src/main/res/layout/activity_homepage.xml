@@ -25,29 +25,30 @@
                 android:layout_width="240dp"
                 android:layout_height="200dp"
                 android:layout_margin="40dp"
+                android:src="@drawable/chatbot"
+                android:backgroundTint="@color/SpringGreen"
                 android:foregroundGravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/chatbot" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
 
             <Button
                 android:id="@+id/chatbotbutton"
                 android:layout_width="240dp"
                 android:layout_height="60dp"
+                android:fontFamily="@font/agri"
                 android:layout_margin="10dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="40dp"
                 android:backgroundTint="@color/teal_200"
                 android:gravity="center"
                 android:textAllCaps="false"
-                android:text="Chat Bot"
+                android:text="Check Weather"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.502"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/chatbotlogo"
-                tools:ignore="MissingConstraints" />
+/>
 
             <Button
                 android:id="@+id/croptype"
@@ -56,6 +57,7 @@
                 android:layout_margin="10dp"
                 android:backgroundTint="@color/teal_200"
                 android:gravity="center"
+                android:fontFamily="@font/agri"
                 android:text="Crop Category"
                 android:textAllCaps="false"
                 android:textSize="18sp"

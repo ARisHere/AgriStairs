@@ -8,11 +8,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class Homepage extends AppCompatActivity {
 
-    private Button chatbox;
+    private Button weather;
     private Button category;
+    private ImageView chatbox;
     Intent a = new Intent();
 
     @Override
@@ -20,8 +22,9 @@ public class Homepage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
 
-        chatbox = (Button) findViewById(R.id.chatbotbutton);
+        chatbox = (ImageView) findViewById(R.id.chatbotlogo);
         category = (Button) findViewById(R.id.croptype);
+        weather = (Button) findViewById(R.id.chatbotbutton);
 
 
         chatbox.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +45,18 @@ public class Homepage extends AppCompatActivity {
                 finish();
             }
         });
+
+        weather.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                a.setClass(getApplicationContext(), Weather.class);
+                startActivity(a);
+                finish();
+            }
+        });
+
+
+
     }
 
 
