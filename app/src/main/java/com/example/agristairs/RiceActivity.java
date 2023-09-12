@@ -1,21 +1,34 @@
 package com.example.agristairs;
 
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.media.ThumbnailUtils;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+
+import com.example.agristairs.ml.RiceUnquant;
+
+import org.tensorflow.lite.DataType;
+import org.tensorflow.lite.Interpreter;
+import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
+
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+
 
 public class RiceActivity extends AppCompatActivity {
 
@@ -24,9 +37,8 @@ public class RiceActivity extends AppCompatActivity {
     private TextView disease, diseasecause, cure, cureinfo;
 
     int imagesize = 224;
-
+    private Interpreter interpreter;
     Intent a = new Intent();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,10 +89,118 @@ public class RiceActivity extends AppCompatActivity {
             disease.setVisibility((View.VISIBLE));
             cure.setVisibility(View.VISIBLE);
 
-//            image = Bitmap.createScaledBitmap(image,imagesize,imagesize,false);
-//            classifyImage(image);
+            image = Bitmap.createScaledBitmap(image,imagesize,imagesize,false);
+            classifyImage(image);
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void classifyImage(Bitmap image) {
+        try {
+            RiceUnquant model = RiceUnquant.newInstance(getApplicationContext());
+
+
+            TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1,224,224,3}, DataType.FLOAT32);
+            ByteBuffer byteBuffer;
+            byteBuffer = ByteBuffer.allocateDirect(4 * imagesize * 3 * imagesize);
+            byteBuffer.order(ByteOrder.nativeOrder());
+
+            int[] intValue = new int[imagesize * imagesize];
+            image.getPixels(intValue,0,image.getWidth(),0,0,image.getWidth(),image.getHeight());
+
+            int pixel=0;
+            for (int i=0; i< imagesize;i++){
+                for (int j=0;j< imagesize;j++){
+                    int val = intValue[pixel++];
+                    byteBuffer.putFloat(((val >> 16 ) & 0xFF) *(1.f / 255.f));
+                    byteBuffer.putFloat(((val >> 8 ) & 0xFF) *(1.f / 255.f));
+                    byteBuffer.putFloat((val  & 0xFF) *(1.f / 255.f));
+                }
+            }
+            inputFeature0.loadBuffer(byteBuffer);
+
+            RiceUnquant.Outputs outputs =model.process(inputFeature0);
+            TensorBuffer outputFeaturesO = outputs.getOutputFeature0AsTensorBuffer();
+
+            float[] confidence = outputFeaturesO.getFloatArray();
+
+            int maxPos = 0;
+            float maxConfidence = 0;
+            for (int i = 0;i< confidence.length;i++){
+                if(confidence[i] > maxConfidence){
+                    maxConfidence = confidence[i];
+                    maxPos=i;
+                }
+            }
+
+            String[] classes = {"Rice_Bacterial leaf blight","Rice_Brown spot","Rice_Leaf smut","Rice_Leaf Scaled","Rice_Blast","Rice_Tungro","Rice_Sheath blight"};
+
+            if(classes[maxPos].equals(classes[0])){
+                disease.setText(classes[maxPos]);
+                diseasecause.setText("Rice_Bacterial leaf blight cause");
+                cureinfo.setText("Cure info of Bacterial leaf blight");
+            }
+
+            else if(classes[maxPos].equals(classes[1])){
+                disease.setText(classes[maxPos]);
+                diseasecause.setText("Rice_Brown spot cause");
+                cureinfo.setText("cure of Rice___Brown Spot");
+            }
+
+            else if(classes[maxPos].equals(classes[2])){
+                disease.setText(classes[maxPos]);
+                diseasecause.setText("Rice_Leaf smut cause");
+                cureinfo.setText("cure of Rice_Leaf smut");
+            }
+
+            else if(classes[maxPos].equals(classes[3])){
+                disease.setText(classes[maxPos]);
+                diseasecause.setText("Rice Leaf Scaled");
+                cureinfo.setText("cure of Rice_Leaf Scaled");
+            }
+
+            else if(classes[maxPos].equals(classes[4])){
+                disease.setText(classes[maxPos]);
+                diseasecause.setText("Rice___Rice Blast cause");
+                cureinfo.setText("cure of Rice___Rice Blast");
+            }
+
+            else if(classes[maxPos].equals(classes[5])){
+                disease.setText(classes[maxPos]);
+                diseasecause.setText("Rice___Rice Tungro cause");
+                cureinfo.setText("cure of Rice___Rice Tungro");
+            }
+
+            else if(classes[maxPos].equals(classes[6])){
+                disease.setText(classes[maxPos]);
+                diseasecause.setText("Rice___Shath Blight cause");
+                cureinfo.setText("cure of Rice___Shath Blight");
+            }
+
+//            else if(classes[maxPos].equals(classes[7])){
+//                cure.setVisibility(View.GONE);
+//                disease.setVisibility(View.GONE);
+//                cureinfo.setText("Your plant is Healthy!!!!!!!!!!!");
+//                cure.setText("");
+//            }
+            else{
+                cure.setVisibility(View.GONE);
+                disease.setVisibility(View.GONE);
+                cureinfo.setText("This is not a rice plant");
+            }
+
+            int finalMaxPos = maxPos;
+            disease.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("https://www.google.com/search?q="+ classes[finalMaxPos])));
+                }
+            });
+            model.close();
+        }catch (IOException e ){
+
+        }
     }
 
 

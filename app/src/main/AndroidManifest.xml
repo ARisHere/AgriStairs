@@ -19,17 +19,20 @@
         <activity
             android:name=".Weather"
             android:exported="false">
+            +
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".RiceActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+
+         <activity
+         android:name=".RiceActivity"
+         android:exported="false">
+         <meta-data
+         android:name="android.app.lib_name"
+         android:value="" />
+         </activity>
+
         <activity
             android:name=".Registration"
             android:exported="false">
