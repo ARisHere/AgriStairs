@@ -46,11 +46,10 @@
             android:orientation="horizontal"
             android:id="@+id/LLEdt"
             android:layout_below="@+id/TVCityName"
-            android:weightSum="5" >
+            android:weightSum="5">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_height="wrap_content"
                 android:id="@+id/TILCity"
                 android:layout_margin="10dp"
