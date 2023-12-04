@@ -1,28 +1,27 @@
 package com.example.agristairs;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -56,14 +55,18 @@ public class Weather extends AppCompatActivity {
     private int PERMISSION_CODE = 1;
     private String cityName;
 
+    Intent a = new Intent();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_weather);
+
+
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
-        setContentView(R.layout.activity_weather);
 
         homeRL = findViewById(R.id.RLHome);
         loadingPB = findViewById(R.id.PBLoading);
@@ -82,12 +85,17 @@ public class Weather extends AppCompatActivity {
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION)!= PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(Weather.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},PERMISSION_CODE);
+        }else{
+            Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            if(location !=null){
+            cityName = getCityName(location.getLongitude(), location.getLatitude());
+            getWeatherInfo(cityName);
+            }
+            else{
+                Toast.makeText(this, "Last known location not available", Toast.LENGTH_SHORT).show();
+            }
+
         }
-
-        Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-        cityName = getCityName(location.getLongitude(),location.getLatitude());
-        getWeatherInfo(cityName);
-
         searchIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,7 +130,7 @@ public class Weather extends AppCompatActivity {
         String cityName = "Not found";
         Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
         try {
-            List<Address> addresses = gcd.getFromLocation(latitude,longitude,10);
+            List<Address> addresses = gcd.getFromLocation(latitude,longitude,5);
             for(Address adr: addresses){
                 if(adr!=null){
                     String city = adr.getLocality();
@@ -141,7 +149,7 @@ public class Weather extends AppCompatActivity {
     }
 
     private void getWeatherInfo(String cityName){
-        String url = "http://api.weatherapi.com/v1/forecast.json?key=ef7be193b0f142f99f8152124232208&q="+ cityName +"&days=1&aqi=no&alerts=no";
+        String url = "http://api.weatherapi.com/v1/forecast.json?key=ef7be193b0f142f99f8152124232208&q="+ cityName +"&days=1&aqi=yes&alerts=yes";
         cityNameTV.setText(cityName);
         RequestQueue requestQueue = Volley.newRequestQueue(Weather.this);
 
@@ -153,7 +161,7 @@ public class Weather extends AppCompatActivity {
                 weatherRVModelArrayList.clear();
                 try {
                     String temperature = response.getJSONObject("current").getString("temp_c");
-                    temperatureTV.setText(temperature+"°C");
+                    temperatureTV.setText(temperature+"°c");
                     int isDay = response.getJSONObject("current").getInt("is_day");
                     String condition = String.valueOf(response.getJSONObject("current").getJSONObject("condition").getJSONObject("text"));
                     String conditionIcon = String.valueOf(response.getJSONObject("current").getJSONObject("condition").getJSONObject("icon"));
@@ -184,7 +192,7 @@ public class Weather extends AppCompatActivity {
                 }
 
             }
-        }, new Response.ErrorListener() {
+        },  new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(Weather.this, "Please enter valid city name..", Toast.LENGTH_SHORT).show();
@@ -192,5 +200,12 @@ public class Weather extends AppCompatActivity {
         });
 
         requestQueue.add(jsonObjectRequest);
+    }
+
+    @Override
+    public void onBackPressed() {
+        a.setClass(getApplicationContext(), crop_category.class);
+        startActivity(a);
+        finish();
     }
 }

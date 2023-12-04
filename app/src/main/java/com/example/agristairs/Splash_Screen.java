@@ -1,11 +1,9 @@
 package com.example.agristairs;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ProgressBar;
-import android.widget.ScrollView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -13,10 +11,6 @@ import java.util.TimerTask;
 public class Splash_Screen extends AppCompatActivity {
 
     private Timer _timer = new Timer();
-
-
-    //private ImageView imageview1;
-
     private Intent in = new Intent();
     private TimerTask i;
 
@@ -29,7 +23,6 @@ public class Splash_Screen extends AppCompatActivity {
     }
 
     private void initialize(Bundle _savedInstanceState) {
-
 
     }
 

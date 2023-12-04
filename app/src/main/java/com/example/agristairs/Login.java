@@ -1,5 +1,4 @@
 package com.example.agristairs;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,13 +18,11 @@ import com.google.firebase.auth.FirebaseAuth;
 public class Login extends AppCompatActivity {
 
     private Button login;
-
     private EditText phonen;
     private ProgressBar progressBar;
     private AlertDialog.Builder d;
+    private TextView signupbtn;
     FirebaseAuth fauth;
-
-
 
     Intent a = new Intent();
     @Override
@@ -36,6 +34,7 @@ public class Login extends AppCompatActivity {
 
     private void initialize(Bundle savedInstanceState) {
 
+        signupbtn= findViewById(R.id.signupbtn);
         login= (Button) findViewById(R.id.loginbutton);
         phonen = (EditText) findViewById(R.id.logphone);
         fauth = FirebaseAuth.getInstance();
@@ -44,6 +43,14 @@ public class Login extends AppCompatActivity {
 
 
 
+        signupbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                a.setClass(getApplicationContext(), Registration.class);
+                startActivity(a);
+                finish();
+            }
+        });
 
 
 
