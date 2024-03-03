@@ -24,6 +24,8 @@ public class Login extends AppCompatActivity {
     private TextView signupbtn;
     FirebaseAuth fauth;
 
+
+
     Intent a = new Intent();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +76,7 @@ public class Login extends AppCompatActivity {
 
                 progressBar.setVisibility(View.VISIBLE);
                 //sign in
-                    if(Phone.equals("01739411518")){
+                    if(Phone.equals("01739411518")||Phone.equals("01731301578")||Phone.equals("01892293221")){
                         Toast.makeText(Login.this, "Login Successful!", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getApplicationContext(), Homepage.class));
                         progressBar.setVisibility(View.INVISIBLE);
