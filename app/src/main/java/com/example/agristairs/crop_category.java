@@ -1,12 +1,12 @@
 package com.example.agristairs;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class crop_category extends AppCompatActivity {
 
@@ -45,7 +45,9 @@ public class crop_category extends AppCompatActivity {
         wheat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(crop_category.this, "This section is under development.", Toast.LENGTH_SHORT).show();
+                a.setClass(getApplicationContext(), WheatActivity.class);
+                startActivity(a);
+                finish();
             }
         });
 
@@ -80,8 +82,6 @@ public class crop_category extends AppCompatActivity {
 
 
     }
-
-
         @Override
         public void onBackPressed() {
             a.setClass(getApplicationContext(), Homepage.class);

@@ -117,6 +117,7 @@ public class RiceActivity extends AppCompatActivity {
                     byteBuffer.putFloat((val  & 0xFF) *(1.f / 255.f));
                 }
             }
+
             inputFeature0.loadBuffer(byteBuffer);
 
             Rice.Outputs outputs =model.process(inputFeature0);
@@ -133,7 +134,7 @@ public class RiceActivity extends AppCompatActivity {
                 }
             }
 
-            String[] classes = {"Bacterial Leaf Blight","Brawn Spot","Lead Scaled","Leaf Smut","Rice Blust","Rice Tungro","Sheath Blight"};
+            String[] classes = {"Bacterial Leaf Blight","Brawn Spot","Leaf Scaled","Leaf Smut","Rice Blust","Rice Tungro","Sheath Blight"};
 
             if(classes[maxPos].equals(classes[0])){
                 disease.setText(classes[maxPos]);
